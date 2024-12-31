@@ -1,10 +1,12 @@
 import useGetMessages from "../../../hooks/useGetMessages";
+import useListenMessages from "../../../hooks/useListenMessages";
 import MessageSkeleton from "../../skeltons/MessageSkelton";
 import Message from "./Message";
 
 const Messages = () => {
 	const {loading,messages}=useGetMessages()
-	console.log('Messages are :',messages)
+	useListenMessages()
+	// console.log('Messages are :',messages)
 	return (
 		<div className='px-4 flex-1 overflow-auto'>
 			{!loading && messages.length!==0 && messages.map((message)=>{

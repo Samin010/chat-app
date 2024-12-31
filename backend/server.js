@@ -8,14 +8,13 @@ import messageRoutes from './routes/message.routes.js'
 import userRoutes from './routes/user.routes.js'
 
 import connectToMongodb from './db/connecToMongodb.js'
-
-const app=express()
+import {app, server} from './socket/socket.js'
 dotenv.config()
 
-app.use(cors({
-   origin:process.env.CLIENT_URL,
-   credentials:true
-}))
+// app.use(cors({
+//    origin:process.env.CLIENT_URL,
+//    credentials:true
+// }))
 app.use(express.json())
 app.use(cookieParser())
 const port=process.env.PORT || 5000
@@ -29,7 +28,7 @@ app.use('/api/messages',messageRoutes)
 app.use('/api/users',userRoutes)
 
 
-app.listen(port,()=>{
+server.listen(port,()=>{
   connectToMongodb()
   console.log(`Server running at port:${port}`)
 })
