@@ -13,10 +13,10 @@ export const SocketContextProvider = ({ children }) => {
   const { authUser } = useAuthContext();
   useEffect(() => {
     if (authUser) {
-      const socket = io("http://localhost:8000",{
-        query:{
-          userId:authUser._id
-        }
+      const socket = io("https://chat-app-o4pj.onrender.com", {
+        query: {
+          userId: authUser._id,
+        },
       });
       setSocket(socket);
       socket.on('getOnlineUsers',(users)=>{
