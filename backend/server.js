@@ -11,10 +11,10 @@ import connectToMongodb from './db/connecToMongodb.js'
 import {app, server} from './socket/socket.js'
 dotenv.config()
 
-// app.use(cors({
-//    origin:process.env.CLIENT_URL,
-//    credentials:true
-// }))
+app.use(cors({
+   origin:process.env.CLIENT_URL,
+   credentials:true
+}))
 
 const __dirname=path.resolve()
 
